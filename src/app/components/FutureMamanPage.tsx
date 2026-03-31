@@ -1,8 +1,3 @@
-import { useState } from "react";
-import { Link } from "react-router";
-import { ChevronRight, Gift, Heart, CheckCircle2, Circle, BookOpen, Star, ChevronDown, ChevronUp, UserPlus } from "lucide-react";
-
-// ─── Liste de naissance — univers ────────────────────────────────────────────
 const listeUnivers = [
   {
     id: "chambre",
