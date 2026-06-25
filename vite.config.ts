@@ -9,6 +9,15 @@ export default defineConfig({
     // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
+    {
+      name: 'figma-asset-resolver',
+      enforce: 'pre',
+      resolveId(id) {
+        if (id.startsWith('figma:asset/')) {
+          return path.resolve(__dirname, 'src/assets/figma-placeholder.png')
+        }
+      },
+    },
   ],
   resolve: {
     alias: {
