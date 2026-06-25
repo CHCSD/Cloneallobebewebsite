@@ -1,6 +1,5 @@
-import { createBrowserRouter, useRouteError } from "react-router";
+import { createBrowserRouter, redirect, useRouteError } from "react-router";
 import { Root } from "./components/Root";
-import { LockPage } from "./components/LockPage";
 import { HomePage } from "./components/HomePage";
 import { BebeSommeilPage } from "./components/BebeSommeilPage";
 import { FutureMamanPage } from "./components/FutureMamanPage";
@@ -13,6 +12,7 @@ import { PoussettesPage } from "./components/PoussettesPage";
 import { GuidePoussettDoublePage } from "./components/GuidePoussettDoublePage";
 import { PersonasPage } from "./components/PersonasPage";
 import { LeCerclePage } from "./components/LeCerclePage";
+import { ProfileDashboard } from "./components/ProfileDashboard";
 
 function ErrorBoundary() {
   const error = useRouteError();
@@ -33,7 +33,7 @@ function ErrorBoundary() {
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component: LockPage,
+    loader: () => redirect("/home"),
     errorElement: <ErrorBoundary />,
   },
   {
@@ -41,6 +41,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorBoundary />,
     children: [
       { path: "/home", Component: HomePage },
+      { path: "/mon-espace", Component: ProfileDashboard },
       { path: "/conseil/bebe-ne-dort-pas", Component: BebeSommeilPage },
       { path: "/future-maman", Component: FutureMamanPage },
       { path: "/produit/chaise-haute-lucie", Component: ChaisehauteLuciePage },
